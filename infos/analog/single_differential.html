@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+</head>
+<body>
+    <div>
+        <h1>Circuit converts DAC's outputs from single-ended to differential mode</h1>
+        <p>Liam Riordan, Analog Devices, Limerick, Ireland; Edited by Brad Thompson and Fran Granville
+
+ - June 8, 2006</p>
+    </div><br>
+    <div>
+           
+
+  <p id="id3833036-p">
+  </p><p id="id3091856-0-p">High-speed DACs, such as Analog Devices' 
+AD9776/78/79 TxDAC family, offer differential outputs, but, for low-end 
+ac applications or high-precision level-setting applications, a 
+single-ended current-output DAC with a differential-conversion circuit 
+provides a novel approach to generating differential-waveform-control 
+functions. The basic circuit in <a id="File-Article-EDN-6339252-6339252f1.pdf" hook="referencedObject" class="reference" refid="12905" objecttype="fileObject" href="http://www.edn.com/file/12905-figure_1.pdf">Figure 1</a> combines a current-output DAC, IC<sub id="id3794985-45-sub">1</sub>, such as the 8-bit AD5424 DAC, with a single-ended-to-differential op-amp stage—IC<sub id="id3794528-46-sub">2</sub>, IC<sub id="id3796739-47-sub">3A</sub>, and IC<sub id="id3828953-48-sub">3B</sub>—to
+ generate the desired outputs. For dual-power-supply applications, you 
+select the DAC's unipolar mode of operation to achieve optimum 
+performance from the DAC. Using a single op amp, the DAC provides 
+two-quadrant multiplication or a unipolar output-voltage swing. The 
+DAC's output requires a buffer because changing the code applied to the 
+DAC's input varies its output impedance.</p>
+  <p id="id3099848-8-p">
+    <span>This equation defines the circuit's output voltage: V<sub>OUT</sub>=–V<sub>REF</sub>×(D/2<sup id="id3805137-49-sup">N</sup>), where N defines the number of input bits, V<sub>REF</sub>
+ is the reference voltage, and D is the decimal equivalent of the binary
+ code. To generate a positive common-mode voltage, you use a negative 
+voltage for the DAC's reference voltage. The DAC's internal design 
+accommodates ac reference input signals of –10 to +10V. In this mode, 
+the DAC provides a 5M-sample/sec maximum update rate for one-quarter 
+full-scale code changes when you operate it from a 5V power supply. Use 
+resistors R<sub>1</sub> and R<sub>2</sub> only if your application requires adjustable gain.</span>
+  </p>
+  <p id="id3091631-16-p">
+    <span>The single-ended-to-differential stage comprises two cross-coupled op amps, which resistors R<sub>5</sub> and R<sub>6</sub>
+ configure as a unity-gain follower. To yield a symmetric circuit, the 
+outputs also drive each other as unity-gain inverters through R<sub>7</sub> and R<sub>8</sub>. The voltage you apply to the positive terminal of op amp IC<sub>2</sub> sets the circuit's common-mode voltage. Resistors R<sub>3</sub> and R<sub>4</sub>
+ control the amplitude of the differential voltage. Review your 
+application's output-load requirements and the op amps' input- and 
+output-voltage capabilities.</span>
+  </p>
+  <p id="id3091337-25-p">For single-supply applications, you can use a current-output DAC in reverse mode, in which you apply the reference voltage, V<sub id="id3807083-67-sub">IN</sub>, to the DAC's I<sub id="id3796419-68-sub">OUT1</sub> pin and take the output voltage from the DAC's V<sub id="id3800663-69-sub">REF</sub> terminal (<a id="File-Article-EDN-6339252-6339252f2.pdf" hook="referencedObject" class="reference" refid="12740" objecttype="fileObject" href="http://www.edn.com/file/12740-Figure_2.pdf">Figure 2</a>).
+ In this configuration, a positive reference voltage produces a positive
+ output voltage. This circuit does not use the DAC's feedback resistor, R<sub id="id3816996-72-sub">FB</sub>, and its connection to I<sub id="id3813372-73-sub">OUT1</sub>
+ prevents stray capacitance effects. The DAC's reference input "sees" an
+ impedance that varies with the applied code and thus requires a 
+low-impedance source.</p>
+  <p id="id3106821-34-p">Note that the switches in the DAC ladder no 
+longer have the same source-to-drain drive voltage, which in turn limits
+ the input voltage to low voltages. As a result, the switches' 
+on-resistances differ and degrade the DAC's linearity. Also, this mode 
+limits the maximum update rate to 1.5M samples/sec. You can use sections
+ of a dual op amp to buffer the DAC's input and to amplify the DAC's 
+output voltage (<a id="File-Article-EDN-6339252-6339252f3.pdf" hook="referencedObject" class="reference" refid="13108" objecttype="fileObject" href="http://www.edn.com/file/13108-Figure_3.pdf">Figure 3</a>).
+ The circuit's intended application determines your choice of supporting
+ amplifiers. For lower speed, precision applications, the op amp 
+requires low input-bias currents and low input-offset voltage to avoid 
+degradation of the DAC's DNL (differential-nonlinearity) performance. 
+For example, the AD8628 offers 100-pA maximum bias current at room 
+temperature and 5-µV maximum input-offset voltage. The op amp's 
+low-frequency noise is important in precision level-setting 
+applications, and the AD8628 specifies 0.1- to 10-Hz noise of less than 
+0.5 µV p-p. Its rail-to-rail inputs and outputs make it ideal for use in
+ single-supply circuits.</p>
+  <p id="id3092052-38-p">For high-speed-system applications, the op 
+amp's slew rate must not dominate the DAC's slew rate. The op amp's 
+bandwidth must be large enough to drive the feedback load and must not 
+limit the circuit's overall bandwidth, and the DAC's output- voltage 
+settling time should determine the circuit's maximum update rate. The 
+AD8042 in <a id="File-Article-EDN-6339252-6339252f1.pdf-1" hook="referencedObject" class="reference" refid="12905" objecttype="fileObject" href="http://www.edn.com/file/12905-figure_1.pdf">figure 1</a> and <a id="File-Article-EDN-6339252-6339252f2.pdf-1" hook="referencedObject" class="reference" refid="12740" objecttype="fileObject" href="http://www.edn.com/file/12740-Figure_2.pdf">figure 2</a>
+ offers 170-MHz bandwidth and a 225V/µsec slew rate, allowing it to 
+easily achieve these results. Other high-speed op amps, such as the 
+AD8022, AD8023, and AD8066, also work well in this application.</p>
+  <p id="id3091402-44-p">The DAC consumes only 0.4 µA of power-supply 
+current, and the op amps thus dominate the circuit's power consumption. 
+To minimize the area for the circuit on a pc board, you can replace all 
+four op amps in <a id="File-Article-EDN-6339252-6339252f2.pdf-2" hook="referencedObject" class="reference" refid="12740" objecttype="fileObject" href="http://www.edn.com/file/12740-Figure_2.pdf">Figure 2</a>
+ with a single AD8044 quad op amp. The single-ended-to-differential 
+conversion of a digitized, eight-point sine wave in the presence of a 
+1.4V common-mode voltage and a 0.6V differential signal produces 
+differential outputs (<a id="File-Article-EDN-6339252-6339252f3.pdf-1" hook="referencedObject" class="reference" refid="13108" objecttype="fileObject" href="http://www.edn.com/file/13108-Figure_3.pdf">Figure 3</a>).</p>
+  <p id="id3817321-p">
+
+ <br>
+    </p></div>
+  
+
+</body></html>
