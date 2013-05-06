@@ -1,0 +1,9 @@
+ScreenWidth=800
+ScreenHeight=600
+AutoOpen=Y
+AutoDatabase=C:/Beta LAYOUT/PCB-POOL BOM/Beta_Stock_06_10_2010.BOMdb
+Database=C:/Beta LAYOUT/PCB-POOL BOM/Beta_Stock_06_10_2010.BOMdb
+AutoOpenSetup=Y
+AutoSetup=C:/Beta LAYOUT/PCB-POOL BOM/PCB-POOL.BOMsu
+Setup=C:/Beta LAYOUT/PCB-POOL BOM/PCB-POOL.BOMsu
+CsvSeparator=,
