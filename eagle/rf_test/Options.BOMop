@@ -1,0 +1,9 @@
+ScreenWidth=800
+ScreenHeight=600
+AutoOpen=Y
+AutoDatabase=/home/vlaad/gcs-hardware/eagle/PCB-POOL BOM/Beta_Stock_02_02_2012.BOMdb
+Database=/home/vlaad/gcs-hardware/eagle/PCB-POOL BOM/Beta_Stock_02_02_2012.BOMdb
+AutoOpenSetup=Y
+AutoSetup=/home/vlaad/gcs-hardware/eagle/PCB-POOL BOM/PCB-POOL.BOMsu
+Setup=/home/vlaad/gcs-hardware/eagle/PCB-POOL BOM/PCB-POOL.BOMsu
+CsvSeparator=,

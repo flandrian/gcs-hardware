@@ -5,3 +5,14 @@ R1 = 1.056 * 1e13 / (1.137 * fHi + fLo)
    = 87k
 R2 = 1.056 * 1e13 / (fHi - fLo)
    = 115k
+
+163 Teile, davon 23 nicht bestückt
+-> 140 Teile zu bestücken
+
+3/4/5 kosten 421/463/496
+
+pcb 48/45/44 eur für 3/4/5 stück
+144/180/222 eur für 3/4/5
+
+mit bauteilen und allem:
+759/901/1041
