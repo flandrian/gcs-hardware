@@ -1,0 +1,31 @@
+Board Konfiguration
+	USB Phy von uC (SJ8 und SJ9 auf 1-2)
+	Frequenz von Fliflop (SJ 5 und SJ6 auf 2-3)
+	Frequenz vierteln (R39 raus)
+	Mixer an 5V (SJ2 auf 2-3)
+	Bandpass RBIAS
+
+
+Board Patches
+	Pulldown an PHY Reset (U$14 Pin 9)
+	Pullup an Mixer OE 2 (U$7 Pin 15)
+	R15 umdrehen-> Bandpass auf niedrige Frequenz
+	U$13 XIN(Pin 5) an GND (Pin 4/11)
+
+ToDo
+	 DACs nach reset? - 0V
+	Interner Phy: ID float->device, VBUS sensing muss ausgeschaltet werden
+	Bandpass Pin5 -> VCC, an Pin 15 sollte Clock erscheinen
+	FPGA hat im gelöschten Zustand Pulldowns
+
+Checkliste
+	Optische Kontrolle
+	Widerstand Power Planes
+	Pfostenstecker bestücken (JP1, JP5, JP4 und JP2)
+	Board Config & Patches
+	Power mit Strombegrenzung
+	
+	RX Amp alleine (), Frequency Sweep, Verstärkung sollte 2 sein
+	RX Amp Gain erhöhen, Frequency Sweep
+	LNA (RX Amp abhängen) über Spannungsteiler mit kleinem Signal füttern
+	Bandpass mit symmetrischem Generator füttern (RX Pfad abhängen)
