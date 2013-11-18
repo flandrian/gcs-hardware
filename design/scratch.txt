@@ -16,3 +16,39 @@ pcb 48/45/44 eur für 3/4/5 stück
 
 mit bauteilen und allem:
 759/901/1041
+
+f_in = 26MHz
+f_VCO = f_in * N[192..432] / M[2..63]
+wobei 1MHz <= f_in/N <= 2MHz (lieber 2 MHz)
+und 192MHz <= f_VCO <= 432 MHz
+f_SYSCLK = f_VCO / P[2,4,6,8]
+wobei f_SYSCLK = 168 MHz
+f_USB = f_VCO / Q[2..15]
+wobei f_USB = 48MHz
+
+=> M := 26, N := 336, P := 2, Q := 7
+
+f_HCLK = f_SYSCLK / HPRE
+
+=> HPRE := 1
+
+f_APBx = f_HCLK / PPREx[1,2,4,8,16]
+
+f_APB2 <= 84 MHz
+f_APB1 <= 42 MHz
+
+f_ADCCLOCK = f_APB2 / ADCPRE[2,4,6,8]
+
+
+Wobei t_CONV minimal 15 ADCCLK cycles ist
+-> f_ADCCLK >= 30 MHz für 2MHz Samplingrate
+
+Geht nicht bei 168 MHz. Das höchste ist f_ADCCLK = 21 
+-> 1.4 MHz Samplingfrequenz
+
+Ansonsten müssten wir f_SYSCLK = 144 MHz benützen, 
+damit liesse sich f_ADCCLK = 36MHz erzielen.
+
+Das Flash braucht 5 Wait States bei 168 MHz und 3.3V
+
+f_ADC_SCK <= 50MHz
